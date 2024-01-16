@@ -5,3 +5,7 @@ Get your RSS link on the their membership page [here](https://www.patreon.com/ru
 
 # Usage
 `./MagnusDownloader <Patreon RSS Link>`
+
+# Requirements
+  -  Curl
+  -  id3v2
