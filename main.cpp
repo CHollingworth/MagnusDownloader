@@ -59,9 +59,8 @@ void setTrackNumber(const std::string& filePath, EpisodeInfo episode) {
     int result = std::system(command.c_str());
 
     if (result != 0) {
-        std::cerr << "Error setting track number." << std::endl;
+        std::cerr << "Error setting track info." << std::endl;
     } else {
-        std::cout << "Track number set successfully." << std::endl;
     }
 }
 
@@ -173,7 +172,13 @@ int main(int argc, char* argv[]) {
         std::cout << "Title: " << episode.name << std::endl;
         std::cout << "Link: " << episode.link << std::endl;
         std::cout << "Episode Number: " << episode.episodeNumber << std::endl;
-        downloadContent(episode);
+        if(!exists(std::filesystem::path("Downloads/"+episode.name+".mp3"))) {
+            std::cout << "Downloading..."<< std::endl;
+            downloadContent(episode);
+            std::cout << "Done.";
+        }else{
+            std::cout << "Already Downloaded" << std::endl;
+        }
         std::cout << "----------------------" << std::endl;
     }
 
@@ -192,7 +197,13 @@ int main(int argc, char* argv[]) {
         std::cout << "Title: " << episode.name << std::endl;
         std::cout << "Link: " << episode.link << std::endl;
         std::cout << "Episode Number: " << episode.episodeNumber << std::endl;
-        downloadContent(episode);
+        if(!exists(std::filesystem::path("Downloads/"+episode.name+".mp3"))) {
+            std::cout << "Downloading..."<< std::endl;
+            downloadContent(episode);
+            std::cout << "Done.";
+        }else{
+            std::cout << "Already Downloaded" << std::endl;
+        }
         std::cout << "----------------------" << std::endl;
     }
 
